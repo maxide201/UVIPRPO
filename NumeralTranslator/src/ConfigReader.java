@@ -1,29 +1,32 @@
-import java.io.BufferedReader;
-import java.io.FileReader;
+import org.json.JSONException;
+import org.json.JSONObject;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.Map;
 
 public class ConfigReader {
-    private final String fileName;
 
-    public ConfigReader(String fileName) {
-        this.fileName = fileName;
-    }
+    public Map<String, Integer> readConfig(String filePath) throws IOException, JSONException {
+        // Читаем содержимое JSON файла в строку
+        String jsonContent = new String(Files.readAllBytes(Paths.get(filePath)));
 
-    public Map<String, Integer> getConfig() throws IOException {
-        Map<String, Integer> wordToNumberMap = new HashMap<>();
-        try (BufferedReader br = new BufferedReader(new FileReader(fileName))) {
-            String line;
-            while ((line = br.readLine()) != null) {
-                String[] parts = line.split(":");
-                if (parts.length == 2) {
-                    String word = parts[0].trim();
-                    int number = Integer.parseInt(parts[1].trim());
-                    wordToNumberMap.put(word, number);
-                }
-            }
+        // Создаем JSON объект из строки
+        JSONObject jsonObject = new JSONObject(jsonContent);
+
+        // Создаем пустую карту для хранения значений из JSON
+        Map<String, Integer> configMap = new HashMap<>();
+
+        // Итерируемся по ключам JSON объекта
+        Iterator<String> keys = jsonObject.keys();
+        while (keys.hasNext()) {
+            String key = keys.next();
+            int value = jsonObject.getInt(key); // Получаем значение по ключу как целое число
+            configMap.put(key, value); // Добавляем пару ключ-значение в карту
         }
-        return wordToNumberMap;
+
+        return configMap;
     }
 }
