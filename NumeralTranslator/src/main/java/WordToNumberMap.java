@@ -13,7 +13,7 @@ public class WordToNumberMap {
         var keys = wordToNumberMap.keySet().toArray(new String[0]);
         Arrays.sort(keys, Comparator.comparingInt(String::length).reversed());
         var keySetStr = String.join("|", keys);
-        regex = "(?<!\b(?:" + keySetStr +")\b\s)(?:" + keySetStr +")(?:\s+(?:" + keySetStr +"))*";
+        regex = "(?:"+keySetStr+")(?:\\s+(?:"+keySetStr+"))*";
     }
 
     public String ConvertNumbers(String text) {
