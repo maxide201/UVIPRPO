@@ -7,6 +7,10 @@ on:
   push:
     branches:
       - 'master'
+  workflow_dispatch: 
+    inputs:
+      tags:
+        description: 'Workflow test '
 
 jobs:
   build:
