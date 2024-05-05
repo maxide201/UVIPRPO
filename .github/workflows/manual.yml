@@ -24,4 +24,4 @@ jobs:
           distribution: 'temurin'
           cache: maven
       - name: Maven Package
-        run: mvn -B clean package -DskipTests
+        run: mvn -B clean package --file ./NumeralTranslator/pom.xml -DskipTests
