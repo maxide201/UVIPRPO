@@ -16,18 +16,18 @@
                 <version>0.8.11</version>
                 <executions>
                     <execution>
+                        <id>default</id>
                         <goals>
-                            <goal>prepare-agent</goal>
-                        </goals>
-                    </execution>
-                    <execution>
-                        <id>report</id>
-                        <phase>test</phase>
-                        <goals>
-                            <goal>report</goal>
+                            <goal>prepare-agent</goal> <!-- Для внедрения агентного кода JaCoCo -->
+                            <goal>report</goal> <!-- Для генерации отчета о покрытии кода -->
                         </goals>
                     </execution>
                 </executions>
+                <configuration>
+                    <reports>
+                        <xml>true</xml> <!-- Генерировать отчет в формате XML -->
+                    </reports>
+                </configuration>
             </plugin>
 
         </plugins>
