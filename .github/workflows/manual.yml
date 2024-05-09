@@ -24,7 +24,7 @@ jobs:
           distribution: 'temurin'
           cache: maven
       - name: Maven Package
-        run: mvn -B clean package --file ./NumeralTranslator/pom.xml -DskipTests
+        run: mvn -B clean package --file ./NumeralTranslator/pom.xml
       - name: Cache SonarCloud packages
         uses: actions/cache@v3
         with:
