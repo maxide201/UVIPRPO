@@ -17,7 +17,7 @@ public class WordToNumberMap {
     }
 
     public String ConvertNumbers(String text) {
-        StringBuilder result = new StringBuilder(text);
+        StringBuilder result = new StringBuilder();
 
         // Создаем паттерн и матчер
         Pattern pattern = Pattern.compile(regex);
@@ -46,6 +46,7 @@ public class WordToNumberMap {
             }
             matcher.appendReplacement(result, res + "");
         }
+
         matcher.appendTail(result);
 
         return result.toString();
