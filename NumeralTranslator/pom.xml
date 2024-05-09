@@ -24,6 +24,7 @@
                     </execution>
                 </executions>
                 <configuration>
+                    <xml>${project.basedir}/NumeralTranslator/target/site/jacoco/jacoco.xml</xml>
                     <reports>
                         <xml>true</xml> <!-- Генерировать отчет в формате XML -->
                     </reports>
@@ -40,7 +41,7 @@
         <sonar.organization>maxide201</sonar.organization>
         <sonar.host.url>https://sonarcloud.io</sonar.host.url>
         <sonar.coverage.jacoco.xmlReportPaths>
-            ./NumeralTranslator/target/site/jacoco/jacoco.xml
+            ${project.basedir}/NumeralTranslator/target/site/jacoco/jacoco.xml
         </sonar.coverage.jacoco.xmlReportPaths>
     </properties>
 
